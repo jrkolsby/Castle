@@ -1,6 +1,6 @@
 # 1. Install Vim Config
 
-* => Necessary
+\* => Necessary
 
 ### Bash Command*
 To preserve previous Vim install:
