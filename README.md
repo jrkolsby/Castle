@@ -1,6 +1,6 @@
 # 1. Install Vim Config
 
-\* => Necessary
+\* === Necessary
 
 ### Bash Command*
 To preserve previous Vim install:
@@ -42,6 +42,6 @@ mv .bashrc .bash_profile
 ```
 
 # 4. Color Pallette
-[ ] Make Color Pallette
-[ ] Figure out how to spell palette
+- [ ] Make Color Pallette
+- [ ] Figure out how to spell palette
 
