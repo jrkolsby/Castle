@@ -1,13 +1,11 @@
-My Vim config
+# 1. Install Vim Config
 
-# 1. INSTALL:
-
-## COPY PASTE:
+### Bash Command
 ```
 mv ~/.vim ~/.vim_old && mv ~/.vimrc ~/.vimrc_old && git clone https://github.com/jrkolsby/Vim.git ~/.vim && echo "runtime vimrc" > ~/.vimrc
 ```
 
-## OVERVIEW:
+### Breakdown
 ```
 mv ~/.vim ~/.vim_old
 mv ~/.vimrc ~/.vimrc_old
@@ -15,13 +13,7 @@ git clone https://github.com/jrkolsby/Vim.git ~/.vim
 echo "runtime vimrc" > ~/.vimrc
 ```
 
-# 2. INSTALL PLUGINS (Optional):
-
-## Plugins
-1. Vundle
-2. NerdTree
-3. Emmet 
-4. Handlebars Syntax
+# 2. Install Plugins (Optional):
 
 ```
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -29,13 +21,20 @@ vim
 :PluginInstall
 ```
 
-# 3. BASH CONFIG (Optional)
+## Plugins
+1. Vundle
+2. NerdTree
+3. Emmet 
+4. Handlebars Syntax
+
+# 3. Intall Bash config (Optional)
 ```
 mv ~/.vim/.bashrc ~/.bashrc
 # IF on a MacOS machine:
 mv .bashrc .bash_profile
 ```
 
-# 4. COLOR PALETTE (Mandatory)
-// TODO
+# 4. Color Pallette (Mandatory)
+[ ] Make Color Pallette
+[ ] Figure out how to spell palette
 
