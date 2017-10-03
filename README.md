@@ -1,23 +1,12 @@
 # 1. Install Vim Config
 
-\* === Necessary
-
-### Bash Command*
-To preserve previous Vim install:
+If there is a previous Vim install:
 ```
 mv ~/.vim ~/.vim_old && mv ~/.vimrc ~/.vimrc_old
 ```
 Install
 ```
 git clone https://github.com/jrkolsby/Vim.git ~/.vim && echo "runtime vimrc" > ~/.vimrc
-```
-
-### Breakdown
-```
-mv ~/.vim ~/.vim_old
-mv ~/.vimrc ~/.vimrc_old
-git clone https://github.com/jrkolsby/Vim.git ~/.vim
-echo "runtime vimrc" > ~/.vimrc
 ```
 
 # 2. Install Plugins*
