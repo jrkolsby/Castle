@@ -1,8 +1,13 @@
 # 1. Install Vim Config
 
 ### Bash Command
+To preserve previous Vim install:
 ```
-mv ~/.vim ~/.vim_old && mv ~/.vimrc ~/.vimrc_old && git clone https://github.com/jrkolsby/Vim.git ~/.vim && echo "runtime vimrc" > ~/.vimrc
+mv ~/.vim ~/.vim_old && mv ~/.vimrc ~/.vimrc_old
+```
+Install
+```
+git clone https://github.com/jrkolsby/Vim.git ~/.vim && echo "runtime vimrc" > ~/.vimrc
 ```
 
 ### Breakdown
