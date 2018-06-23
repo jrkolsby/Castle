@@ -1,102 +1,3 @@
-"                                STARTVUNDLE
-" ____________________________________________________________________________
-
-function s:StartVundle()
-
-  filetype off
-  call vundle#rc()
-
-  Plugin 'gmarik/vundle'
-
-  " __ GITHUB _________________________________
-
-  Plugin 'altercation/vim-colors-solarized'
-  Plugin 'itchyny/lightline.vim'
-  Plugin 'scrooloose/nerdtree'
-  Plugin 'scrooloose/nerdcommenter'
-  Plugin 'majutsushi/tagbar'
-  Plugin 'fs111/pydoc.vim'
-  Plugin 'scrooloose/syntastic'
-  Plugin 'tpope/vim-fugitive'
-  Plugin 'gregsexton/gitv'
-
-  " Syntastic checker-ek:
-  " c:      gcc, splint
-  " python: flake8, pylint
-
-  " __ VIM-SCRIPTS ____________________________
-
-  Plugin 'Align',
-  Plugin 'EasyGrep',
-  Plugin 'NumUtils',
-  Plugin 'vis'
-
-  " __ OTHER REPOS ____________________________
-
-  " Plugin 'git://git.wincent.com/command-t.git'
-
-  " __ LOCAL REPOS ____________________________
-
-  Plugin 'file://~/.vim/bundle/vegyes'
-
-  filetype plugin indent on
-
-endfunction
-
-"                               INSTALLVUNDLE
-" ____________________________________________________________________________
-"
-" Cloning vundle to ~/.vim/bundle/vundle
-
-function s:InstallVundle()
-
-  let vundle_repo = 'https://github.com/gmarik/vundle.git'
-  let path = substitute( $HOME . '/.vim/bundle/vundle', '/', has( 'win32' ) ? '\\' : '/', 'g' )
-
-  if system( 'git --version' ) !~ '^git'
-    echohl WarningMsg | echomsg 'Git is not available.' | echohl None
-    return
-  endif
-
-  let install = confirm( 'Install vundle?', "&Yes\n&No", 2, 'Qusetion' )
-  if install == 2
-    return
-  endif
-
-  if ! isdirectory( path )
-    silent! if ! mkdir( path, 'p' )
-      echohl ErrorMsg | echomsg 'Cannot create directory (may be a regular file): ' . path | echohl None
-      return
-    endif
-  endif
-
-  echo 'Cloning vundle...'
-  if system( 'git clone "' . vundle_repo . '" "' . path . '"'  ) =~ 'fatal'
-    echohl ErrorMsg | echomsg 'Cannot clone ' . vundle_repo . ' (' . path . ' may be not empty)' | echohl None
-    return
-  endif
-
-  call s:StartVundle()
-  PluginInstall
-
-endfunction
-
-"                           START / INSTALL VUNDLE
-" ____________________________________________________________________________
-
-set nocompatible
-set runtimepath+=$HOME/.vim/bundle/vundle/
-runtime autoload/vundle.vim
-
-if ! exists( '*vundle#rc' )
-  autocmd  VimEnter  *  call s:InstallVundle()
-else
-  call s:StartVundle()
-endif
-
-"                          BEGIN VIM CONFIGURATION
-" ____________________________________________________________________________
-
 if exists("g:loaded_vimrc") || &cp
   finish
 else
@@ -115,10 +16,11 @@ call vundle#rc()
 call vundle#begin()
 
 " Vundle manages Vundle
-Plugin 'VundleVim/Vundle.vim'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
+Plugin 'jparise/vim-graphql'
 Plugin 'mattn/emmet-vim'
-Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'w0rp/ale'
 
 " Map tab if html file
 autocmd FileType html imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
@@ -129,6 +31,13 @@ filetype plugin indent on
 
 " Maps Ctrl-n
 map <C-n> :NERDTreeToggle<CR>
+
+" Show hidden files except for swp
+let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.swp$', '\.swp$']
+
+" silent SCP editing
+let g:netrw_silent=1
 
 " Open NERDTree automatically on directory open
 autocmd StdinReadPre * let s:std_in=1
@@ -155,6 +64,11 @@ syntax enable
 " pad scrolling
 set scrolloff=8
 
+map <ScrollWheelUp> <C-Y>
+map <S-ScrollWheelUp> <C-U>
+map <ScrollWheelDown> <C-E>
+map <S-ScrollWheelDown> <C-D>
+
 " easy navigation between wrapped lines
 vmap j gj
 vmap k gk
@@ -169,8 +83,11 @@ set splitright
 " Make it quick
 set ttyfast
 
-" Enable mouse!
-" set mouse=a
+" Backspace fix for macvim
+set backspace=indent,eol,start
+
+" Mac clipboard
+set clipboard=unnamedplus,unnamed
 
 " Enable Line Numbers
 set number
@@ -178,12 +95,20 @@ set number
 " Maps Ctrl-[h,j,k,l] to resizing and navigating window split
 map <silent> <C-h> <C-w><
 map <silent> <C-l> <C-w>>
+map <silent> <C-o> <C-w>+
+map <silent> <C-p> <C-w>-
 map <silent> <C-k> <C-w><C-w>
 map <silent> <C-j> <C-w><S-w>
 
 " Buffer switching using tab and shift tab in normal mode
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
+
+" LINE 
+" LENGTH 
+" SORTING
+xnoremap s : ! awk '{ print length(), $0 \| "sort -n \| cut -d\\  -f2-" }'<CR>
+xnoremap S : ! awk '{ print length(), $0 \| "sort -rn \| cut -d\\  -f2-" }'<CR>
 
 " and don't let MacVim remap them
 if has("gui_macvim")

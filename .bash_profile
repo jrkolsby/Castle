@@ -1,12 +1,21 @@
-# List files with colors
 alias ll='ls -laGF'
 
 alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+
+alias fixprettier='git diff HEAD --name-only | xargs -I {} yarn prettier --write {}'
+
+alias fp='ssh ron@floorplan.intranet.1stdibs.com'
+
+# TODO: git aliases
+# gs='git status'
+# gp = git pull --rebase upstream <branch>
+# gl = git reflog
 
 mkcd () { mkdir "$@" && cd "$@"; }
-clac () { ssh $@@clac.cs.columbia.edu; }
+
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
 
 # Easier directory navigation
 alias ..='cd ..'
@@ -37,7 +46,7 @@ fi
 
 # color!
 if [ "$color_prompt" = yes ]; then
-    PS1="\[\033[1;33m\]\u \[\033[31m\]@\h \[\033[32m\]:\w \[\033[0m\]$ "
+    PS1="\[\033[1;33m\]\u\[\033[31m\]\$(parse_git_branch) \[\033[32m\]\w \[\033[0m\]$ "
 else
     PS1="\u @\h :\w $ "
 fi
@@ -56,6 +65,9 @@ export PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
+
+# git autocomplete script
+source ~/.git-completion.sh
 
 # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.rvm/bin" 
