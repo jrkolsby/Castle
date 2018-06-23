@@ -1,0 +1,19 @@
+{
+  "name": "james-castle",
+  "version": "1.0.0",
+  "description": "vim config and bash profile",
+  "main": "install.sh",
+  "scripts": {
+    "test": "./install.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrkolsby/Vim.git"
+  },
+  "author": "James Kolsby",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jrkolsby/Vim/issues"
+  },
+  "homepage": "https://github.com/jrkolsby/Vim#readme"
+}
