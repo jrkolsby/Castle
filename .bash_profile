@@ -13,6 +13,14 @@ alias fp='ssh ron@floorplan.intranet.1stdibs.com'
 
 mkcd () { mkdir "$@" && cd "$@"; }
 
+dapache () { 
+    cp ~/.vim/snips/docker-apache-php ./Dockerfile 
+    docker build -t "$@" . 
+    docker run -p 8080:80 -d "$@"
+    docker run -p 8080:80 -d -v /Users/dan/site:/var/www/site "$@"
+    apachectl start
+}
+
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
