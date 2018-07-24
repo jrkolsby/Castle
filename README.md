@@ -1,6 +1,6 @@
 ## Install
 
-`./install.sh`
+`git clone https://github.com/jrkolsby/Castle.git ~/.vim && ~/.vim/scripts/install.sh`
 
 ### Plugins
 1. Vundle
