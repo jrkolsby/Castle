@@ -3,7 +3,6 @@ alias ll='ls -laGF'
 alias grep='grep --color=auto'
 
 alias fixprettier='git diff HEAD --name-only | xargs -I {} yarn prettier --write {}'
-
 alias fp='ssh ron@floorplan.intranet.1stdibs.com'
 
 alias wer='curl wttr.in?0'
@@ -22,6 +21,9 @@ look () { grep -rnw "$2" -e "$1"; }
 vimf () { vim $(fzf --height 40% --reverse -q "$@"); }
 vims () { tmux split-window -v "vim $@"; }
 vimi () { tmux split-window -h "vim $@"; }
+
+# Include hidden files for fzf
+export FZF_DEFAULT_COMMAND='find .'
 
 dapache () { 
     cp ~/.vim/snips/docker-apache-php ./Dockerfile 

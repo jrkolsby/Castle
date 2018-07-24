@@ -13,3 +13,8 @@
 4. Tmux Navigator
 5. Autoclose
 6. Ale (Linter)
+
+## Dependencies
+- fzf
+- vim
+- git
