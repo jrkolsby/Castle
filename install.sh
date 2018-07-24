@@ -1,8 +1,7 @@
 #/usr/bin/bash
 
-mv ~/.vim ~/.vim_old && mv ~/.vimrc ~/.vimrc_old
-mv ~/.vim/.bashrc ~/.bash_profile
+git clone https://github.com/VundleVim/Vundle.vim.git ./bundle/Vundle.vim
 
-echo "runtime vimrc" > ~/.vimrc
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
+ln -s ./config/vimrc ../.vimrc
+ln -s ./config/bashrc ../.bash_profile
+ln -s ./config/tmux.conf ../.tmux.conf
