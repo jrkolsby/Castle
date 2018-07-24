@@ -6,12 +6,22 @@ alias fixprettier='git diff HEAD --name-only | xargs -I {} yarn prettier --write
 
 alias fp='ssh ron@floorplan.intranet.1stdibs.com'
 
+alias wer='curl wttr.in?0'
+
 # TODO: git aliases
-# gs='git status'
-# gp = git pull --rebase upstream <branch>
-# gl = git reflog
+alias gs='git status'
+#alias gp = 'git pull --rebase upstream'
+#alias gl = 'git reflog'
 
 mkcd () { mkdir "$@" && cd "$@"; }
+
+json () { cat "$@" | python -m json.tool; }
+
+look () { grep -rnw "$2" -e "$1"; }
+
+vimf () { vim $(fzf --height 40% --reverse -q "$@"); }
+vims () { tmux split-window -v "vim $@"; }
+vimi () { tmux split-window -h "vim $@"; }
 
 dapache () { 
     cp ~/.vim/snips/docker-apache-php ./Dockerfile 
@@ -23,6 +33,16 @@ dapache () {
 
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+split_pwd() {
+        # Only show ellipses for directory trees -gt 3
+        # Otherwise use the default pwd as the current \w replacement
+        if [ $(pwd | grep -o '/' | wc -l) -gt 3 ]; then
+            pwd | cut -d'/' -f1-3 | xargs -I{} echo {}"/../${PWD##*/}"
+        else
+            pwd
+        fi
 }
 
 # Easier directory navigation
@@ -54,6 +74,7 @@ fi
 
 # color!
 if [ "$color_prompt" = yes ]; then
+    # PS1="\[\033[1;33m\]\u\[\033[31m\]\$(parse_git_branch) \[\033[32m\]\$(split_pwd) \[\033[0m\]$ "
     PS1="\[\033[1;33m\]\u\[\033[31m\]\$(parse_git_branch) \[\033[32m\]\w \[\033[0m\]$ "
 else
     PS1="\u @\h :\w $ "

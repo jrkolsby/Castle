@@ -17,14 +17,17 @@ call vundle#begin()
 
 " Vundle manages Vundle
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jparise/vim-graphql'
 Plugin 'mattn/emmet-vim'
+Plugin 'commentary.vim'
+Plugin 'Autoclose'
 Plugin 'w0rp/ale'
 
 " Map tab if html file
 autocmd FileType html imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
-
+autocmd FileType php imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 call vundle#end()
 filetype plugin indent on
@@ -34,7 +37,7 @@ map <C-n> :NERDTreeToggle<CR>
 
 " Show hidden files except for swp
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.swp$', '\.swp$']
+let NERDTreeIgnore = ['\.swp$', '\.swo$']
 
 " silent SCP editing
 let g:netrw_silent=1
@@ -42,6 +45,9 @@ let g:netrw_silent=1
 " Open NERDTree automatically on directory open
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+" Fuzzy find
+set rtp+=/usr/local/opt/fzf
 
 " Filenames like *.xml, *.html, *.xhtml, ...
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml" 
@@ -83,11 +89,17 @@ set splitright
 " Make it quick
 set ttyfast
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
 " Backspace fix for macvim
 set backspace=indent,eol,start
 
 " Mac clipboard
 set clipboard=unnamedplus,unnamed
+
+" Don't copy when pasting
+vnoremap p "_dP
 
 " Enable Line Numbers
 set number
@@ -95,10 +107,13 @@ set number
 " Maps Ctrl-[h,j,k,l] to resizing and navigating window split
 map <silent> <C-h> <C-w><
 map <silent> <C-l> <C-w>>
-map <silent> <C-o> <C-w>+
-map <silent> <C-p> <C-w>-
 map <silent> <C-k> <C-w><C-w>
 map <silent> <C-j> <C-w><S-w>
+
+map <silent> <C-t> <C-w>+
+map <silent> <C-y> <C-w>-
+map <silent> <C-o> <C-w><
+map <silent> <C-p> <C-w>>
 
 " Buffer switching using tab and shift tab in normal mode
 nnoremap <Tab> :bnext<CR>
@@ -142,3 +157,4 @@ set dir^=~/.backup//
 " - override this setting by tacking on \c or \C to your search term to make
 "   your search always case-insensitive or case-sensitive, respectively.
 set ignorecase
+
