@@ -2,6 +2,6 @@
 
 git clone https://github.com/VundleVim/Vundle.vim.git ./bundle/Vundle.vim
 
-ln -s ./config/vimrc ../.vimrc
-ln -s ./config/bashrc ../.bash_profile
-ln -s ./config/tmux.conf ../.tmux.conf
+ln -s ~/.vim/config/.vimrc ~/.vimrc
+ln -s ~/.vim/config/.bash_profile ~/.bash_profile
+ln -s ~/.vim/config/.tmux.conf ~/.tmux.conf
