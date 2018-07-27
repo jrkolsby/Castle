@@ -8,9 +8,10 @@ alias fp='ssh ron@floorplan.intranet.1stdibs.com'
 alias wer='curl wttr.in?0'
 
 # TODO: git aliases
+alias gl='git log'
+alias gb='git branch'
 alias gs='git status'
-#alias gp = 'git pull --rebase upstream'
-#alias gl = 'git reflog'
+alias gr='git pull --rebase'
 
 mkcd () { mkdir "$@" && cd "$@"; }
 
