@@ -5,13 +5,14 @@ alias grep='grep --color=auto'
 alias fixprettier='git diff HEAD --name-only | xargs -I {} yarn prettier --write {}'
 alias fp='ssh ron@floorplan.intranet.1stdibs.com'
 
+# weather
 alias wer='curl wttr.in?0'
 
-# TODO: git aliases
-alias gl='git log'
+# Git aliases
 alias gb='git branch'
 alias gs='git status'
 alias gr='git pull --rebase'
+alias gl='git log --date=short --pretty=format":%C(yellow)%h %C(blue)%ad %C(green)%aN %Creset%s%C(red)%d%Creset"'
 
 mkcd () { mkdir "$@" && cd "$@"; }
 
