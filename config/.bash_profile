@@ -1,6 +1,9 @@
+alias l='ls -1aGF'
 alias ll='ls -laGF'
 
 alias grep='grep --color=auto'
+
+alias clear='tmux clear && clear'
 
 alias fixprettier='git diff HEAD --name-only | xargs -I {} yarn prettier --write {}'
 alias fp='ssh ron@floorplan.intranet.1stdibs.com'
@@ -103,4 +106,7 @@ export PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
 source ~/.git-completion.sh
 
 # Add RVM to PATH for scripting
-export PATH="$PATH:$HOME/.rvm/bin" 
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# OPAM configuration
+. /Users/jrkolsby/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
