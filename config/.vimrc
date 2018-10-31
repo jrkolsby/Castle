@@ -95,7 +95,7 @@ cmap w!! w !sudo tee > /dev/null %
 set backspace=indent,eol,start
 
 " Mac clipboard
-set clipboard=unnamedplus,unnamed
+set clipboard=unnamedplus
 
 " Don't copy when pasting
 vnoremap p "_dP
