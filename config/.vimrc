@@ -27,9 +27,9 @@ Plugin 'w0rp/ale'
 " Map tab if html file
 autocmd FileType html imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 autocmd FileType php imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+autocmd Filetype ml setlocal shiftwidth=2
 
 call vundle#end()
-filetype plugin indent on
 
 " Maps Ctrl-n
 map <C-n> :NERDTreeToggle<CR>
@@ -59,9 +59,6 @@ set history=1000
 
 " colors!
 colorscheme noctu
-
-" i don't really know what this does
-filetype plugin indent on
 
 " highlighting
 syntax enable
@@ -129,10 +126,8 @@ if has("gui_macvim")
     let macvim_skip_cmd_opt_movement = 1
 endif
 
-" Always replace tab with spaces
+" Plugin-specific indentation
 filetype plugin indent on
-set tabstop=4
-set shiftwidth=4
 set expandtab
 set smarttab
 set autoindent
@@ -144,6 +139,8 @@ autocmd FileType text setlocal autoindent expandtab softtabstop=2 textwidth=80 "
 
 " Don't do spell-checking on Vim help files
 autocmd FileType help setlocal nospell
+autocmd Filetype ocaml setlocal ts=2 sw=2 expandtab
+autocmd Filetype ml setlocal ts=2 sw=2 expandtab
 
 " Prepend ~/.backup to backupdir so that Vim will look for that directory 
 " before littering the current dir with backups.
@@ -163,6 +160,11 @@ let s:opam_share_dir = system("opam config var share")
 let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
 
 let s:opam_configuration = {}
+
+" Allow color schemes to do bright colors without forcing bold.
+if &t_Co == 8 && $TERM !~# '^linux'
+  set t_Co=16
+endif
 
 function! OpamConfOcpIndent()
   execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"

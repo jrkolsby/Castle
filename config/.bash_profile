@@ -93,20 +93,23 @@ LS_COLORS=$LS_COLORS:'di=1;4;31;42' ; export LS_COLORS
 # added to install fontforge
 export PATH=/usr/local/bin:$PATH
 
-# added to install scim
-export PATH=$PATH:~/Documents/sc-im/src
+# Etcher CLI
+export PATH="$PATH:/opt/etcher-cli"
+
+# Scim
+export PATH="$PATH:~/Documents/sc-im/src"
 
 # Setting PATH for Python 3.5
 export PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
+
+# Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/bin"
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
 
 # git autocomplete script
 source ~/.git-completion.sh
-
-# Add RVM to PATH for scripting
-export PATH="$PATH:$HOME/.rvm/bin"
 
 # OPAM configuration
 . /Users/jrkolsby/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
