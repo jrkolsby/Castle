@@ -1,3 +1,6 @@
+alias ls='ls'
+alias o='xdg-open'
+
 alias l='ls -1aGF'
 alias ll='ls -laGF'
 
