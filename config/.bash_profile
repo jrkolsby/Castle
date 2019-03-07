@@ -93,23 +93,18 @@ unset color_prompt force_color_prompt
 
 LS_COLORS=$LS_COLORS:'di=1;4;31;42' ; export LS_COLORS
 
-# added to install fontforge
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:$PATH		# fontforge
+export PATH="$PATH:/opt/etcher-cli"		# etcher cli
+export PATH="$PATH:~/Documents/sc-im/src"	# scim
+export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.5/bin"
+export PATH="$PATH:$HOME/.rvm/bin"		# scripting?
 
-# Etcher CLI
-export PATH="$PATH:/opt/etcher-cli"
-
-# Scim
-export PATH="$PATH:~/Documents/sc-im/src"
-
-# Setting PATH for Python 3.5
-export PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
-
-# Add RVM to PATH for scripting
-export PATH="$PATH:$HOME/.rvm/bin"
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
+
+export MANPATH="$MANPATH:/usr/local/opt/coreutils/libexec/gnuman/"
+export MANPATH="$MANPATH:/usr/local/linux-man/"
 
 # git autocomplete script
 source ~/.git-completion.sh

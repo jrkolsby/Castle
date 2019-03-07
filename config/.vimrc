@@ -128,19 +128,19 @@ endif
 
 " Plugin-specific indentation
 filetype plugin indent on
-set expandtab
+set shiftwidth=4
 set smarttab
 set autoindent
 
 autocmd FileType make setlocal noexpandtab
 autocmd FileType makefile setlocal noexpandtab
 " Text file settings
-autocmd FileType text setlocal autoindent expandtab softtabstop=2 textwidth=80 " spell spelllang=en_us
+autocmd FileType text setlocal autoindent softtabstop=2 textwidth=80 " spell spelllang=en_us
 
 " Don't do spell-checking on Vim help files
 autocmd FileType help setlocal nospell
-autocmd Filetype ocaml setlocal ts=2 sw=2 expandtab
-autocmd Filetype ml setlocal ts=2 sw=2 expandtab
+autocmd Filetype ocaml setlocal ts=2 sw=2 
+autocmd Filetype ml setlocal ts=2 sw=2 
 
 " Prepend ~/.backup to backupdir so that Vim will look for that directory 
 " before littering the current dir with backups.

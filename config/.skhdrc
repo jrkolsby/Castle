@@ -1,0 +1,14 @@
+alt - r : chunkc tiling::desktop --rotate 90
+
+# increase region size
+alt - o : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge west && chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge east
+alt - p : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge west && chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge east
+alt - t : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge north && chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge south
+alt - y : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge north && chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge south
+
+alt - return : chunkc tiling::desktop --equalize
+
+alt - h : chunkc tiling::window --focus west
+alt - j : chunkc tiling::window --focus south
+alt - k : chunkc tiling::window --focus north
+alt - l : chunkc tiling::window --focus east
