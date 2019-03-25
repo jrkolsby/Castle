@@ -91,8 +91,8 @@ cmap w!! w !sudo tee > /dev/null %
 " Backspace fix for macvim
 set backspace=indent,eol,start
 
-" Mac clipboard
-set clipboard=unnamedplus
+" Crossplatform clipboard
+set clipboard^=unnamed,unnamedplus
 
 " Don't copy when pasting
 vnoremap p "_dP
