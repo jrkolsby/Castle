@@ -1,8 +1,6 @@
 #!/bin/bash
 
-if [[ -f ~/.vim/bundle/Vundle.vim ]]; then
-        git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 git clone http://git.kernel.org/pub/scm/docs/man-pages/man-pages ~/.vim/bundle/man
 
