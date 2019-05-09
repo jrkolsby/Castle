@@ -21,7 +21,7 @@ alias gr='git pull --rebase'
 alias gl='git log --date=short --pretty=format":%C(yellow)%h %C(blue)%ad %C(green)%aN %Creset%s%C(red)%d%Creset"'
 
 alias qsys='sh /opt/intelFPGA/18.1/embedded/embedded_command_shell.sh'
-gitc () { source ~/.castle/scripts/git-complete.sh; }
+gitc () { source "~/.castle/scripts/git-complete"; }
 
 # gitc
 
@@ -98,12 +98,13 @@ unset color_prompt force_color_prompt
 
 LS_COLORS=$LS_COLORS:'di=1;4;31;42' ; export LS_COLORS
 
-export PATH=/usr/local/bin:$PATH			# fontforge
+export PATH="$PATH:/usr/local/bin"			# fontforge
 export PATH="$PATH:/opt/etcher-cli"			# etcher cli
 export PATH="$PATH:/opt/intelFPGA/18.1/quartus/bin"	# quartus
-export PATH="$PATH:~/Documents/sc-im/src"		# scim
 export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.5/bin"
 export PATH="$PATH:$HOME/.rvm/bin"			# scripting?
+export PATH="$PATH:$HOME/Documents/sc-im/src"		# scim
+export PATH="$PATH:$HOME/.castle/scripts"		# our scripts!
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
