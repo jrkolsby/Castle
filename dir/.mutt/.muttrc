@@ -1,0 +1,12 @@
+   set imap_user = "X"
+   set imap_pass = ""
+   set from = "X@Y.Z"
+   set smtp_url = "smtp://X@smtp.mail.me.com:587/"
+   set folder = "imaps://X@imap.mail.me.com/"
+   set spoolfile = "imaps://user@imap.mail.me.com/INBOX"
+   set postponed = "+Drafts"
+   set record = "+Sent Messages"
+   set imap_pipeline_depth=0
+   set header_cache = "~/.mutt/cache/headers"
+   set message_cachedir = "~/.mutt/cache/bodies"
+   set certificate_file = "~/.mutt/certificates"

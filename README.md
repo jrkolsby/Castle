@@ -1,10 +1,10 @@
 ## Install
 
-`git clone https://github.com/jrkolsby/Castle.git ~/.vim && ~/.vim/scripts/install.sh`
+`git clone https://github.com/jrkolsby/Castle.git ~/.castle && ~/.castle/scripts/install.sh`
 
 ## Uninstall
 
-`~/.vim/scripts/uninstall.sh`
+`~/.castle/scripts/uninstall.sh`
 
 ### Vim Plugins
 1. Vundle

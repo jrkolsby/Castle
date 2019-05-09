@@ -140,6 +140,7 @@ autocmd FileType text setlocal autoindent softtabstop=2 textwidth=80 " spell spe
 " Don't do spell-checking on Vim help files
 autocmd FileType help setlocal nospell
 autocmd Filetype ocaml setlocal ts=2 sw=2 
+autocmd Filetype sv setlocal ts=2 sw=2 
 autocmd Filetype ml setlocal ts=2 sw=2 
 
 " Prepend ~/.backup to backupdir so that Vim will look for that directory 
