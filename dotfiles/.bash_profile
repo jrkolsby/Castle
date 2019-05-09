@@ -104,7 +104,7 @@ export PATH="$PATH:/opt/intelFPGA/18.1/quartus/bin"	# quartus
 export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.5/bin"
 export PATH="$PATH:$HOME/.rvm/bin"			# scripting?
 export PATH="$PATH:$HOME/Documents/sc-im/src"		# scim
-export PATH="$PATH:$HOME/.castle/scripts"		# our scripts!
+export PATH="$PATH:$HOME/.castle/bin"			# our scripts!
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 

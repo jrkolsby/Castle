@@ -30,12 +30,12 @@ fi
 
 # GENERATE HOME DIRECTORY SYMLINKS
 cd && {
-    ln -s ~/.castle/dir/.vim
-    ln -s ~/.castle/dir/.mutt
-    ln -s ~/.castle/dot/.vimrc
-    ln -s ~/.castle/dot/.tmux.conf
-    ln -s ~/.castle/dot/.bash_profile
-    ln -s ~/.castle/dot/.bash_profile .bashrc
+    ln -s ~/.castle/dirs/.vim
+    ln -s ~/.castle/dirs/.mutt
+    ln -s ~/.castle/dotfiles/.vimrc
+    ln -s ~/.castle/dotfiles/.tmux.conf
+    ln -s ~/.castle/dotfiles/.bash_profile
+    ln -s ~/.castle/dotfiles/.bash_profile .bashrc
 }
 
 # CLONE REPOS
