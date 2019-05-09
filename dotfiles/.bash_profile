@@ -21,9 +21,8 @@ alias gr='git pull --rebase'
 alias gl='git log --date=short --pretty=format":%C(yellow)%h %C(blue)%ad %C(green)%aN %Creset%s%C(red)%d%Creset"'
 
 alias qsys='sh /opt/intelFPGA/18.1/embedded/embedded_command_shell.sh'
-gitc () { source "~/.castle/scripts/git-complete"; }
 
-# gitc
+source ~/.castle/bin/git-complete
 
 mkcd () { mkdir "$@" && cd "$@"; }
 
