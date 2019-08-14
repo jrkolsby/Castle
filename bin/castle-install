@@ -51,3 +51,4 @@ cd && {
 # CLONE REPOS
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone http://git.kernel.org/pub/scm/docs/man-pages/man-pages ~/man
+git clone https://github.com/tmux-plugins/tmux-resurrect ~/.castle/dirs/tmux-resurrect
