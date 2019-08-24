@@ -6,6 +6,8 @@ alias ll='ls -laGF'
 
 alias grep='grep --color=auto'
 
+alias youtube-dl='youtube-dl --recode-video mp4'
+
 alias clear='tmux clear && clear'
 
 alias fixprettier='git diff HEAD --name-only | xargs -I {} yarn prettier --write {}'
@@ -13,6 +15,9 @@ alias fp='ssh ron@floorplan.intranet.1stdibs.com'
 
 # weather
 alias wer='curl wttr.in?0'
+
+alias mysql='mysqlsh --sql'
+alias sql='mysqlsh --sql --uri dbuser@localhost'
 
 # Git aliases
 alias gb='git branch'
@@ -57,6 +62,12 @@ split_pwd() {
         else
             pwd
         fi
+}
+
+sleep-in() {
+    local minutes=$1
+    local datetime=`date -v+${minutes}M +"%m/%d/%y %H:%M:%S"`
+    sudo pmset schedule sleep "$datetime"
 }
 
 # Easier directory navigation
@@ -113,3 +124,17 @@ export MANPATH="$MANPATH:/usr/local/linux-man/"
 
 # OPAM configuration
 . /Users/jrkolsby/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+export VULKAN_SDK="$HOME/.vulkan_sdk/macOS"
+
+export PATH="$VULKAN_SDK/bin:$PATH"
+
+export DYLD_LIBRARY_PATH="$VULKAN_SDK/lib:$DYLD_LIBRARY_PATH"
+
+export VK_ICD_FILENAMES="$VULKAN_SDK/etc/vulkan/icd.d/MoltenVK_icd.json"
+
+export VK_LAYER_PATH="$VULKAN_SDK/etc/vulkan/explicit_layer.d"
+
+export SHADERC_LIB_DIR="$VULKAN_SDK/lib"
