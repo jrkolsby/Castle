@@ -126,6 +126,8 @@ if has("gui_macvim")
     let macvim_skip_cmd_opt_movement = 1
 endif
 
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+
 " Plugin-specific indentation
 filetype plugin indent on
 set shiftwidth=4

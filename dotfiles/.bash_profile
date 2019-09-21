@@ -25,7 +25,9 @@ alias gs='git status'
 alias gr='git pull --rebase'
 alias gl='git log --date=short --pretty=format":%C(yellow)%h %C(blue)%ad %C(green)%aN %Creset%s%C(red)%d%Creset"'
 
-alias qsys='sh /opt/intelFPGA/18.1/embedded/embedded_command_shell.sh'
+qsys () { 
+    scl enable devtoolset-2 /opt/intelFPGA/18.1/embedded/embedded_command_shell.sh 
+}
 
 source ~/.castle/bin/git-complete
 
@@ -111,10 +113,12 @@ LS_COLORS=$LS_COLORS:'di=1;4;31;42' ; export LS_COLORS
 export PATH="$PATH:/usr/local/bin"			# fontforge
 export PATH="$PATH:/opt/etcher-cli"			# etcher cli
 export PATH="$PATH:/opt/intelFPGA/18.1/quartus/bin"	# quartus
+export PATH="$PATH:/opt/intelFPGA/19.1/modelsim_ase/bin" # modelsim
 export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.5/bin"
 export PATH="$PATH:$HOME/.rvm/bin"			# scripting?
 export PATH="$PATH:$HOME/Documents/sc-im/src"		# scim
 export PATH="$PATH:$HOME/.castle/bin"			# our scripts!
+export PATH="$PATH:/opt/rh/devtoolset-2/root/usr/bin"	# g++ 4.8
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
@@ -126,15 +130,3 @@ export MANPATH="$MANPATH:/usr/local/linux-man/"
 . /Users/jrkolsby/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 export PATH="$HOME/.cargo/bin:$PATH"
-
-export VULKAN_SDK="$HOME/.vulkan_sdk/macOS"
-
-export PATH="$VULKAN_SDK/bin:$PATH"
-
-export DYLD_LIBRARY_PATH="$VULKAN_SDK/lib:$DYLD_LIBRARY_PATH"
-
-export VK_ICD_FILENAMES="$VULKAN_SDK/etc/vulkan/icd.d/MoltenVK_icd.json"
-
-export VK_LAYER_PATH="$VULKAN_SDK/etc/vulkan/explicit_layer.d"
-
-export SHADERC_LIB_DIR="$VULKAN_SDK/lib"
