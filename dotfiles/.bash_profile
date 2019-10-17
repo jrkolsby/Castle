@@ -31,6 +31,8 @@ qsys () {
 
 source ~/.castle/bin/git-complete
 
+die () { kill -9 $(lsof -i:$1 -t); }
+
 mkcd () { mkdir "$@" && cd "$@"; }
 
 json () { cat "$@" | python -m json.tool; }
@@ -40,6 +42,15 @@ look () { grep -rnw "$2" -e "$1"; }
 vimf () { vim $(fzf --height 40% --reverse -q "$@"); }
 vims () { tmux split-window -v "vim $@"; }
 vimi () { tmux split-window -h "vim $@"; }
+
+dibs-abf () { 
+    tmux split -h "cd ~/projects/ferrum/packages/dibs-buyer-layout && yarn dev";
+    tmux split -h "cd ~/projects/ferrum/apps/app-buyer-finding && yarn dev --local-dbl";
+    tmux split -h "cd ~/projects/ferrum/apps/app-buyer-finding && USE_LOCAL_DBL=true yarn start";
+}
+
+dibs-gql () { tmux split -h "cd ~/projects/dibs-graphql && yarn dev"; }
+dibs-qbd () { tmux split -h "cd ~/projects/dibs-query-builder && yarn dev"; }
 
 # Include hidden files for fzf
 export FZF_DEFAULT_COMMAND='find .'
