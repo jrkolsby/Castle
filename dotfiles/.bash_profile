@@ -25,6 +25,9 @@ alias gs='git status'
 alias gr='git pull --rebase'
 alias gl='git log --date=short --pretty=format":%C(yellow)%h %C(blue)%ad %C(green)%aN %Creset%s%C(red)%d%Creset"'
 
+alias startdbl='USE_LOCAL_DBL=true yarn start'
+alias devdbl='yarn dev --local-dbl'
+
 qsys () { 
     scl enable devtoolset-2 /opt/intelFPGA/18.1/embedded/embedded_command_shell.sh 
 }
@@ -42,15 +45,6 @@ look () { grep -rnw "$2" -e "$1"; }
 vimf () { vim $(fzf --height 40% --reverse -q "$@"); }
 vims () { tmux split-window -v "vim $@"; }
 vimi () { tmux split-window -h "vim $@"; }
-
-dibs-abf () { 
-    tmux split -h "cd ~/projects/ferrum/packages/dibs-buyer-layout && yarn dev";
-    tmux split -h "cd ~/projects/ferrum/apps/app-buyer-finding && yarn dev --local-dbl";
-    tmux split -h "cd ~/projects/ferrum/apps/app-buyer-finding && USE_LOCAL_DBL=true yarn start";
-}
-
-dibs-gql () { tmux split -h "cd ~/projects/dibs-graphql && yarn dev"; }
-dibs-qbd () { tmux split -h "cd ~/projects/dibs-query-builder && yarn dev"; }
 
 # Include hidden files for fzf
 export FZF_DEFAULT_COMMAND='find .'
