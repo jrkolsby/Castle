@@ -32,6 +32,8 @@ qsys () {
     scl enable devtoolset-2 /opt/intelFPGA/18.1/embedded/embedded_command_shell.sh 
 }
 
+shopt -s globstar
+
 source ~/.castle/bin/git-complete
 
 die () { kill -9 $(lsof -i:$1 -t); }
