@@ -32,7 +32,7 @@ qsys () {
     scl enable devtoolset-2 /opt/intelFPGA/18.1/embedded/embedded_command_shell.sh 
 }
 
-shopt -s globstar
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 source ~/.castle/bin/git-complete
 
@@ -126,6 +126,8 @@ export PATH="$PATH:$HOME/.rvm/bin"			# scripting?
 export PATH="$PATH:$HOME/Documents/sc-im/src"		# scim
 export PATH="$PATH:$HOME/.castle/bin"			# our scripts!
 export PATH="$PATH:/opt/rh/devtoolset-2/root/usr/bin"	# g++ 4.8
+export PATH="$PATH:/opt/homebrew/bin"	                # brew
+
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
@@ -136,4 +138,4 @@ export MANPATH="$MANPATH:/usr/local/linux-man/"
 # OPAM configuration
 . /Users/jrkolsby/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
-export PATH="$HOME/.cargo/bin:$PATH"
+. "$HOME/.cargo/env"

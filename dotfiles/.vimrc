@@ -27,7 +27,14 @@ Plugin 'w0rp/ale'
 " Map tab if html file
 autocmd FileType html imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 autocmd FileType php imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
-autocmd Filetype ml setlocal shiftwidth=2
+
+" Txt file commands
+autocmd Filetype text setlocal wrap
+autocmd Filetype text setlocal textwidth=0
+autocmd Filetype text setlocal linebreak
+autocmd Filetype text setlocal nonumber
+
+setlocal shiftwidth=2
 
 call vundle#end()
 
@@ -136,8 +143,6 @@ set autoindent
 
 autocmd FileType make setlocal noexpandtab
 autocmd FileType makefile setlocal noexpandtab
-" Text file settings
-autocmd FileType text setlocal autoindent softtabstop=2 textwidth=80 " spell spelllang=en_us
 
 " Don't do spell-checking on Vim help files
 autocmd FileType help setlocal nospell
