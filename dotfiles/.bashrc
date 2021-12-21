@@ -48,6 +48,8 @@ vimf () { vim $(fzf --height 40% --reverse -q "$@"); }
 vims () { tmux split-window -v "vim $@"; }
 vimi () { tmux split-window -h "vim $@"; }
 
+makemov () { ffmpeg -i "$1" -vcodec libx264 -pix_fmt yuv420p -acodec copy "$1.mov"; } 
+
 # Include hidden files for fzf
 export FZF_DEFAULT_COMMAND='find .'
 
@@ -122,6 +124,7 @@ export PATH="$PATH:/opt/etcher-cli"			# etcher cli
 export PATH="$PATH:/opt/intelFPGA/18.1/quartus/bin"	# quartus
 export PATH="$PATH:/opt/intelFPGA/19.1/modelsim_ase/bin" # modelsim
 export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.5/bin"
+export PATH="$PATH:/Users/james/Library/Python/3.8/bin"
 export PATH="$PATH:$HOME/.rvm/bin"			# scripting?
 export PATH="$PATH:$HOME/Documents/sc-im/src"		# scim
 export PATH="$PATH:$HOME/.castle/bin"			# our scripts!
@@ -134,8 +137,5 @@ export PATH="$PATH:/opt/homebrew/bin"	                # brew
 
 export MANPATH="$MANPATH:/usr/local/opt/coreutils/libexec/gnuman/"
 export MANPATH="$MANPATH:/usr/local/linux-man/"
-
-# OPAM configuration
-. /Users/jrkolsby/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 . "$HOME/.cargo/env"
