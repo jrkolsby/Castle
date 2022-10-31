@@ -8,7 +8,7 @@ alias grep='grep --color=auto'
 
 alias youtube-dl='youtube-dl --recode-video mp4'
 
-alias clear='tmux clear && clear'
+alias clear='tmux clear-history && clear'
 
 alias fixprettier='git diff HEAD --name-only | xargs -I {} yarn prettier --write {}'
 alias fp='ssh ron@floorplan.intranet.1stdibs.com'
@@ -21,6 +21,7 @@ alias sql='mysqlsh --sql --uri dbuser@localhost'
 
 # Git aliases
 alias gb='git branch'
+alias gbc='git branch --show-current'
 alias gs='git status'
 alias gr='git pull --rebase'
 alias gl='git log --date=short --pretty=format":%C(yellow)%h %C(blue)%ad %C(green)%aN %Creset%s%C(red)%d%Creset"'
@@ -49,6 +50,8 @@ vims () { tmux split-window -v "vim $@"; }
 vimi () { tmux split-window -h "vim $@"; }
 
 makemov () { ffmpeg -i "$1" -vcodec libx264 -pix_fmt yuv420p -acodec copy "$1.mov"; } 
+
+makegif () { ffmpeg -y -i "$1" -filter_complex "[0]reverse[r];[0][r]concat=n=2:v=1:a=0,fps=12,scale=720:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=64[p];[s1][p]paletteuse=dither=bayer" "$1.gif"; }
 
 # Include hidden files for fzf
 export FZF_DEFAULT_COMMAND='find .'
@@ -131,11 +134,12 @@ export PATH="$PATH:$HOME/.castle/bin"			# our scripts!
 export PATH="$PATH:/opt/rh/devtoolset-2/root/usr/bin"	# g++ 4.8
 export PATH="$PATH:/opt/homebrew/bin"	                # brew
 
-
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
 
 export MANPATH="$MANPATH:/usr/local/opt/coreutils/libexec/gnuman/"
 export MANPATH="$MANPATH:/usr/local/linux-man/"
 
-. "$HOME/.cargo/env"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
