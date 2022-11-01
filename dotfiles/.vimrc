@@ -34,6 +34,8 @@ autocmd Filetype text setlocal textwidth=0
 autocmd Filetype text setlocal linebreak
 autocmd Filetype text setlocal nonumber
 
+autocmd Filetype beancount setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
+
 setlocal shiftwidth=2
 
 call vundle#end()
