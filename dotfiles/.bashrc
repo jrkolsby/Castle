@@ -8,7 +8,7 @@ alias grep='grep --color=auto'
 
 alias youtube-dl='youtube-dl --recode-video mp4'
 
-alias clear='tmux clear-history && clear'
+alias clear='tmux clear-history &>/dev/null && clear'
 
 alias fixprettier='git diff HEAD --name-only | xargs -I {} yarn prettier --write {}'
 alias fp='ssh ron@floorplan.intranet.1stdibs.com'
@@ -55,7 +55,11 @@ makemovsub () { ffmpeg -i "$1" -vcodec libx264 -pix_fmt yuv420p -acodec copy -vf
 makemovsubtest () { ffmpeg -i "$1" -vcodec libx264 -t 00:05:00 -pix_fmt yuv420p -acodec copy -vf "subtitles='$2':force_style='FontName=HelveticaNeue,Bold=700,FontSize=18,Outline=1'" "$1-subbed.mov"; }
 shiftsubs() { ffmpeg -itsoffset $2 -i "$1" -c copy "$1-shifted.srt"; }
 
-makegif () { ffmpeg -y -i "$1" -filter_complex "[0]reverse[r];[0][r]concat=n=2:v=1:a=0,fps=12,scale=720:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=64[p];[s1][p]paletteuse=dither=bayer" "$1.gif"; }
+makegifloop () { ffmpeg -y -i "$1" -filter_complex "[0]reverse[r];[0][r]concat=n=2:v=1:a=0,fps=12,scale=720:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=64[p];[s1][p]paletteuse=dither=bayer" "$1.gif"; }
+makemosaic () { ffmpeg -i "$1" -vf select='gt(scene\,0.2)',scale=160:-1,tile=8x30 -frames:v 1 "$1.png"; }
+makemosaicc4k () { ffmpeg -i still-%05d.png -filter_complex "crop=3600:1890:0:260,scale=1000:-1,tile=2x4" output.png; }
+
+makegif () { ffmpeg -y -i "$1" -filter_complex "fps=12,scale=720:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=64[p];[s1][p]paletteuse=dither=bayer" "$1.gif"; }
 
 # Include hidden files for fzf
 export FZF_DEFAULT_COMMAND='find .'
@@ -148,3 +152,4 @@ export MANPATH="$MANPATH:/usr/local/linux-man/"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+. "$HOME/.cargo/env"
